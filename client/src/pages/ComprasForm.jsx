@@ -6,13 +6,13 @@ import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import "react-toastify/dist/ReactToastify.css";
-import Button from "@mui/joy/Button";
 import TextField from "@mui/material/TextField";
 import Container from "@mui/material/Container";
 import * as React from "react";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
+import { Grid } from "@mui/material";
 
 export default function ComprasForm() {
   const params = useParams();
@@ -20,13 +20,12 @@ export default function ComprasForm() {
 
   const CenteredHalfContainer = styled(Container)({
     maxWidth: "100%",
+    // width: "50%",
     display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    margin: "auto",
-    padding: "50px",
-    minHeight: "100vh",
+    // flexDirection: "column",
+    // justifyContent: "center",
+    // alignItems: "center"
+    // padding: "50px",
   });
 
   useEffect(() => {
@@ -56,18 +55,8 @@ export default function ComprasForm() {
   }, []);
 
   return (
-    <Box
-      noValidate
-      autoComplete="off"
-      component="form"
-      sx={{
-        display: "flex",
-        flexWrap: "wrap",
-        justifyContent: "center",
-        marginTop: "auto",
-      }}
-    >
-      <CenteredHalfContainer>
+    <CenteredHalfContainer className="bg-red-600 grid gap-4">
+      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         <ToastContainer />
         <Formik
           initialValues={""}
@@ -94,117 +83,119 @@ export default function ComprasForm() {
               <h1 className="text-xl font-bold uppercase text-center">
                 {params.id ? "Editar Compra" : "Crear Compras"}
               </h1>
-              <TextField
-                label="Sucursal"
-                sx={{ m: 1, width: "40ch" }}
-                variant="outlined"
-                id="outlined-basic"
-                color="warning"
-                name="Ciu_descripcion"
-                required
-                onChange={handleChange}
-              />
-              <TextField
-                label="Pedido"
-                sx={{ m: 1, width: "40ch" }}
-                variant="outlined"
-                id="outlined-basic"
-                color="warning"
-                name="Ciu_descripcion"
-                required
-                onChange={handleChange}
-              />
-              <TextField
-                label="Usuario"
-                sx={{ m: 1, width: "40ch" }}
-                variant="outlined"
-                id="outlined-basic"
-                color="warning"
-                name="Ciu_descripcion"
-                required
-                onChange={handleChange}
-              />
-              <TextField
-                label="Fecha"
-                sx={{ m: 1, width: "40ch" }}
-                variant="outlined"
-                id="outlined-basic"
-                color="warning"
-                name="Ciu_descripcion"
-                required
-                onChange={handleChange}
-              />
-              <InputLabel id="demo-simple-select-label">
-                Tipo Comprobante
-              </InputLabel>
-              <Select
-                sx={{ m: 1, width: "40ch" }}
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                onChange={handleChange}
-              >
-                <MenuItem value="Factura">CONTADO</MenuItem>
-              </Select>
-              <TextField
-                label="Nro Factura"
-                sx={{ m: 1, width: "40ch" }}
-                variant="outlined"
-                id="outlined-basic"
-                color="warning"
-                name="Ciu_descripcion"
-                required
-                onChange={handleChange}
-              />
-              <TextField
-                label="Total"
-                sx={{ m: 1, width: "40ch" }}
-                variant="outlined"
-                id="outlined-basic"
-                color="warning"
-                name="Ciu_descripcion"
-                required
-                onChange={handleChange}
-              />
-              <TextField
-                label="Exenta"
-                sx={{ m: 1, width: "40ch" }}
-                variant="outlined"
-                id="outlined-basic"
-                color="warning"
-                name="Ciu_descripcion"
-                required
-                onChange={handleChange}
-              />
-              <TextField
-                label="IVA 5"
-                sx={{ m: 1, width: "40ch" }}
-                variant="outlined"
-                id="outlined-basic"
-                color="warning"
-                name="Ciu_descripcion"
-                required
-                onChange={handleChange}
-              />
-              <TextField
-                label="IVA 10"
-                sx={{ m: 1, width: "40ch" }}
-                variant="outlined"
-                id="outlined-basic"
-                color="warning"
-                name="Ciu_descripcion"
-                required
-                onChange={handleChange}
-              />
-              <TextField
-                label="Estado"
-                sx={{ m: 1, width: "40ch" }}
-                variant="outlined"
-                id="outlined-basic"
-                color="warning"
-                name="Ciu_descripcion"
-                required
-                onChange={handleChange}
-              />
+              <div className="w-auto" style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
+                <TextField
+                  label="Sucursal"
+                  sx={{ m: 1, width: "40ch" }}
+                  variant="outlined"
+                  id="outlined-basic"
+                  color="warning"
+                  name="Ciu_descripcion"
+                  required
+                  onChange={handleChange}
+                />
+                <TextField
+                  label="Pedido"
+                  sx={{ m: 1, width: "40ch" }}
+                  variant="outlined"
+                  id="outlined-basic"
+                  color="warning"
+                  name="Ciu_descripcion"
+                  required
+                  onChange={handleChange}
+                />
+                <TextField
+                  label="Usuario"
+                  sx={{ m: 1, width: "40ch" }}
+                  variant="outlined"
+                  id="outlined-basic"
+                  color="warning"
+                  name="Ciu_descripcion"
+                  required
+                  onChange={handleChange}
+                />
+                <TextField
+                  label="Fecha"
+                  sx={{ m: 1, width: "40ch" }}
+                  variant="outlined"
+                  id="outlined-basic"
+                  color="warning"
+                  name="Ciu_descripcion"
+                  required
+                  onChange={handleChange}
+                />
+                <InputLabel id="demo-simple-select-label">
+                  Tipo Comprobante
+                </InputLabel>
+                <Select
+                  sx={{ m: 1, width: "40ch" }}
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  onChange={handleChange}
+                >
+                  <MenuItem value="Factura">CONTADO</MenuItem>
+                </Select>
+                <TextField
+                  label="Nro Factura"
+                  sx={{ m: 1, width: "40ch" }}
+                  variant="outlined"
+                  id="outlined-basic"
+                  color="warning"
+                  name="Ciu_descripcion"
+                  required
+                  onChange={handleChange}
+                />
+                <TextField
+                  label="Total"
+                  sx={{ m: 1, width: "40ch" }}
+                  variant="outlined"
+                  id="outlined-basic"
+                  color="warning"
+                  name="Ciu_descripcion"
+                  required
+                  onChange={handleChange}
+                />
+                <TextField
+                  label="Exenta"
+                  sx={{ m: 1, width: "40ch" }}
+                  variant="outlined"
+                  id="outlined-basic"
+                  color="warning"
+                  name="Ciu_descripcion"
+                  required
+                  onChange={handleChange}
+                />
+                <TextField
+                  label="IVA 5"
+                  sx={{ m: 1, width: "40ch" }}
+                  variant="outlined"
+                  id="outlined-basic"
+                  color="warning"
+                  name="Ciu_descripcion"
+                  required
+                  onChange={handleChange}
+                />
+                <TextField
+                  label="IVA 10"
+                  sx={{ m: 1, width: "40ch" }}
+                  variant="outlined"
+                  id="outlined-basic"
+                  color="warning"
+                  name="Ciu_descripcion"
+                  required
+                  onChange={handleChange}
+                />
+                <TextField
+                  label="Estado"
+                  sx={{ m: 1, width: "40ch" }}
+                  variant="outlined"
+                  id="outlined-basic"
+                  color="warning"
+                  name="Ciu_descripcion"
+                  required
+                  onChange={handleChange}
+                />
+              </div>
               <button
                 style={{
                   backgroundColor: "#4B5563",
@@ -233,9 +224,7 @@ export default function ComprasForm() {
                 onClick={() => {
                   navigate("/ciudades");
                 }}
-              >
-            
-              </button>
+              ></button>
 
               {/* <Button
                 variant="contained"
@@ -275,7 +264,7 @@ export default function ComprasForm() {
             </Form>
           )}
         </Formik>
-      </CenteredHalfContainer>
-    </Box>
+      </Grid>
+    </CenteredHalfContainer>
   );
 }

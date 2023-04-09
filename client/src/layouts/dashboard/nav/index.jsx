@@ -50,7 +50,9 @@ export default function Nav({ openNav, onCloseNav }) {
     <Scrollbar
       sx={{
         height: 1,
+        backgroundImage: "linear-gradient( 94.3deg,  rgba(26,33,64,1) 10.9%, rgba(81,84,115,1) 87.1% )",
         '& .simplebar-content': { height: 1, display: 'flex', flexDirection: 'column' },
+
       }}
     >
       <Box sx={{ px: 2.5, py: 3, display: 'inline-flex' }}>
@@ -74,6 +76,7 @@ export default function Nav({ openNav, onCloseNav }) {
           </StyledAccount>
         </Link>
       </Box>
+     {/* <SidenavCollapse /> */}
       <NavSection data={navConfig} />
       <Box sx={{ flexGrow: 1 }} />
     </Scrollbar>

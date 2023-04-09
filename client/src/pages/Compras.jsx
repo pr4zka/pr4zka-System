@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { Link as RouterLink } from 'react-router-dom';
 import { useEffect } from "react";
 import * as React from "react";
 import { styled } from "@mui/material/styles";
@@ -11,7 +12,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import PostAddIcon from "@mui/icons-material/PostAdd";
 import EditIcon from "@mui/icons-material/Edit";
-import { Box, Container, Button, Hidden } from "@mui/material";
+import { Box, Container, Button, Hidden, Link } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 
 export default function Compras(){
@@ -44,8 +45,7 @@ export default function Compras(){
     justifyContent: "center",
     alignItems: "center",
     margin: "auto",
-    padding: "50px",
-    minHeight: "100vh",
+    padding: "50px"
   });
 
   const StyledTableRow = styled(TableRow)(({ theme }) => ({
@@ -57,6 +57,11 @@ export default function Compras(){
       border: 0,
     },
   }));
+
+  const redirectTo = (url) => {
+    // redirect sin navigate;
+    return <Link href={url} />;
+  };
 
 
   return (
@@ -122,38 +127,34 @@ export default function Compras(){
             </TableBody>
           </Table>
         </TableContainer>
+        <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
         <Button
           variant="contained"
           color="primary"
-          sx={{ mr: 1, marginTop: "20px" }}
+          sx={{ mr: 1, marginTop: "20px", marginLeft: "20px" }}
         >
         </Button>
         <Button
           variant="contained"
           color="success"
-          sx={{ mr: 1, marginTop: "20px" }}
+          sx={{ mr: 1, marginTop: "20px", marginLeft: "20px" }}
         >
         </Button>
+        <Link to="../new/compras" component={RouterLink} sx={{ display: 'contents' }}>
+          <PostAddIcon color="primary" className="cursor-pointer w-20" style={{marginLeft:"20px", marginRight:"20px", marginTop:"20px"}}  />
+        </Link>
         <Button
           variant="contained"
           color="inherit"
-          style={{ position: "absolute", right: "490px", marginTop: "20px" }}
-          onClick={() => {
-            navigate("/new/compra");
-          }}
-        >
-          <PostAddIcon color="primary" className="cursor-pointer w-20" />
-        </Button>
-        <Button
-          variant="contained"
-          color="inherit"
-          style={{ position: "absolute", right: "390px", marginTop: "20px" }}
           onClick={() => {
             navigate("/");
           }}
+          style={{marginTop:"20px"}}
         >
+
           Volver
         </Button>
+      </Box>
         {/* <TablePagination
           rowsPerPageOptions={[10, 25, 100]}
           component="div"
