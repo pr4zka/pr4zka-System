@@ -7,18 +7,17 @@ import ThemeProvider from "./theme";
 // import { StyledChart } from "./components/chart";
 import Routes from "./routes";
 
-
 function App() {
   return (
-      <HelmetProvider>
-        <BrowserRouter>
-          <ThemeProvider>
-            {/* <ScrollToTop /> */}
-            {/* <StyledChart /> */}
-            <Routes />
-          </ThemeProvider>
-        </BrowserRouter>
-      </HelmetProvider>
+    <HelmetProvider>
+      <BrowserRouter>
+        <ThemeProvider>
+          {/* <ScrollToTop /> */}
+          {/* <StyledChart /> */}
+          <Routes />
+        </ThemeProvider>
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }
 
