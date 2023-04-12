@@ -12,18 +12,32 @@ import DashboardAppPage from "./pages/DashboardAppPage";
 import Compras from "./pages/Compras";
 import ComprasForm from "./pages/ComprasForm";
 import Ciudades from "./pages/pagesMov/Ciudades";
-import CiudadesForm from './pages/pagesMov/CiudadesForm'
-
-// ----------------------------------------------------------------------
+import Mercaderias from "./pages/pagesMov/Mercaderias";
+import CiudadesForm from "./pages/pagesMov/CiudadesForm";
+import { ProtectedRoutes } from "./hooks/ProtetedRoutes";
+import { useSelector } from "react-redux";
+import  Ventas  from "./pages/ventas/Ventas";
+import Proveedores from "./pages/Proveedores";
+import ProveedoresForm from "./pages/ProveedoresForm";
+import MercasderiasForm from "./pages/pagesMov/MercaderiasForm";
 
 export default function Router() {
+  const { isAuth } = useSelector((state) => state.auth);
   const routes = useRoutes([
     {
       path: "/menu",
       element: <DashboardLayout />,
       children: [
         { element: <Navigate to="/menu/app" />, index: true },
-        { path: "app", element: <DashboardAppPage /> },
+        {
+          path: "app",
+          element: (
+            <ProtectedRoutes isAllowed={isAuth}>
+              <DashboardAppPage />
+            </ProtectedRoutes>
+          ),
+        },
+
         { path: "user", element: <UserPage /> },
         { path: "products", element: <ProductsPage /> },
         { path: "blog", element: <BlogPage /> },
@@ -31,6 +45,13 @@ export default function Router() {
         { path: "new/compras", element: <ComprasForm /> },
         { path: "ciudades", element: <Ciudades /> },
         { path: "new/ciudades", element: <CiudadesForm /> },
+        { path: "mercaderias", element: <Mercaderias /> },
+        { path: "new/mercaderias", element: <MercasderiasForm /> },
+        { path: "proveedores", element: <Proveedores /> },
+        { path: "new/proveedores", element: <ProveedoresForm /> },
+        //ventas
+        { path: "ventas", element: <Ventas /> },
+        { path: "new/ventas", element: <Ventas /> },
       ],
     },
     {
@@ -44,7 +65,7 @@ export default function Router() {
         { path: "404", element: <Page404 /> },
         { path: "*", element: <Navigate to="/404" /> },
       ],
-    }
+    },
   ]);
 
   return routes;

@@ -14,18 +14,19 @@ import { Box, Container, Button, Hidden } from "@mui/material";
 import PostAddIcon from "@mui/icons-material/PostAdd";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { getAll } from "../../feactures/ciudades/ciudadesSlice";
 import { useDispatch, useSelector } from "react-redux";
+import {getAllProveedores} from '../feactures/provedores/proveedores'
 
-const Ciudades = () => {
+
+const Proveedores = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   
-  const ciudades = useSelector((state) => state.ciudades.data);
+   const provedor = useSelector((state) => state.proveedor);
   
   
   useEffect(() => {
-    dispatch(getAll());
+    dispatch(getAllProveedores());
   }, []);
    
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -45,7 +46,7 @@ const Ciudades = () => {
   }));
 
   const CenteredHalfContainer = styled(Container)({
-    maxWidth: "100%",
+    maxWidth: "80%",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -76,26 +77,33 @@ const Ciudades = () => {
         my={20}
       >
         <h1 className="text-center text-3xl mb-8 truncate">
-          Registro Ciudades
+          Registro Proveedores
         </h1>
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 700 }} aria-label="customized table">
             <TableHead>
               <TableRow>
                 <StyledTableCell align="justify">Codigo</StyledTableCell>
-                <StyledTableCell align="justify">Descripcion</StyledTableCell>
+                <StyledTableCell align="justify">Pais</StyledTableCell>
+                <StyledTableCell align="justify">Ciudad</StyledTableCell>
+                <StyledTableCell align="justify">Razon Social</StyledTableCell>
+                <StyledTableCell align="justify">RUC</StyledTableCell>
+                <StyledTableCell align="justify">Direccion</StyledTableCell>
+                <StyledTableCell align="justify">Telefono</StyledTableCell>
                 <StyledTableCell align="justify"></StyledTableCell>
                 <StyledTableCell align="justify"></StyledTableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {ciudades && ciudades.map((row) => (
-                <StyledTableRow key={row.Ciu_id}>
-                  <StyledTableCell align="justify">{row.Ciu_id}</StyledTableCell>
-                  <StyledTableCell align="justify">
-                    {row.Ciu_descripcion}
-                  </StyledTableCell>
-
+              {provedor && provedor.map((row) => (
+                <StyledTableRow key={row.Pro_Id}>
+                  <StyledTableCell align="justify">{row.Pro_Id}</StyledTableCell>
+                  <StyledTableCell align="justify">{row.id_paise.descripcion}</StyledTableCell>
+                  <StyledTableCell align="justify">{row.Ciu.Ciu_descripcion}</StyledTableCell>
+                  <StyledTableCell align="justify">{row.razonsocial}</StyledTableCell>
+                  <StyledTableCell align="justify">{row.ruc}</StyledTableCell>
+                  <StyledTableCell align="justify">{row.direccion}</StyledTableCell>
+                  <StyledTableCell align="justify">{row.telefono}</StyledTableCell>
                   <StyledTableCell
                     onClick={() => {
                       navigate(`/edit/ciudades/${row.Ciu_id}`);
@@ -154,4 +162,4 @@ const Ciudades = () => {
   );
 };
 
-export default Ciudades;
+export default Proveedores;

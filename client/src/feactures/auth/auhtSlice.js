@@ -5,7 +5,7 @@ export const loginPost = createAsyncThunk(
   "auth/loginStatus",
   async (user, thunkAPI) => {
     const response = await login(user);
-    return response.data;
+    return response;
   }
 );
 

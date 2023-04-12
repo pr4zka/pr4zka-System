@@ -13,27 +13,27 @@ const navConfig = [
   },
   {
     title: 'Movimientos',
-    path: '/menu/compras',
+    path: '/menu/app',
     icon: icon('ic_user'),
   },
   {
-    title: 'New Compras',
-    path: '/menu/new/compras',
-  },
-  {
     title: 'Referenciales',
-    path: '/menu/ciudades',
+    path: '/menu/app',
     icon: icon('ic_cart'),
     children: [
       {
         title: 'Ciudades',
         path: '/menu/ciudades', 
+      },
+      {
+        title: 'Mercaderias',
+        path: '/menu/mercaderias', 
       }
     ]
   },
   {
     title: 'Compras',
-    path: '/menu/blog',
+    path: '/menu/app',
     icon: icon('ic_blog'),
     children: [
       {
@@ -43,13 +43,23 @@ const navConfig = [
       {
         title: 'Detalle Compras',
         path: '/menu/detalle-compras',
+      },
+      {
+        title: 'Proveedores',
+        path: '/menu/proveedores',
       }
     ]
   },
   {
     title: 'Ventas',
-    path: '/login',
+    path: '/menu/app',
     icon: icon('ic_lock'),
+    children: [
+      {
+        title: 'Ventas',
+        path: '/menu/ventas',
+      },
+   ]
   },
   {
     title: 'Configuracion',

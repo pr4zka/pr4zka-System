@@ -39,10 +39,6 @@ const {sequelize} = require('../database/db');
       type: DataTypes.STRING(255),
       allowNull: false
     },
-    ser_compronbante: {
-      type: DataTypes.STRING(255),
-      allowNull: false
-    },
     nro_factura: {
       type: DataTypes.INTEGER,
       allowNull: false

@@ -15,7 +15,7 @@ import Iconify from "../../../components/iconify";
 import { useDispatch, useSelector } from "react-redux";
 import { loginPost } from "../../../feactures/auth/auhtSlice";
 import { setAuthData } from "../../../feactures/auth/auhtSlice";
-import {showToast} from '../../../feactures/notifications/toastSlice'
+import { showToast } from "../../../feactures/notifications/toastSlice";
 
 export default function LoginForm() {
   const dispatch = useDispatch();
@@ -29,14 +29,17 @@ export default function LoginForm() {
   };
 
   const handleLogin = async (values) => {
-    // const resLogin = await dispatch(loginPost(values));
-    // if (resLogin.payload) {
-      // dispatch(setAuthData(resLogin.payload));
-      dispatch(showToast({message: 'Bienvenido', type: 'success'}))
-      // handleClick();
-    // }else{
-      // dispatch(showToast({message: 'Usuario o contraseña incorrecta', type: 'error'}))
-    // }
+    const resLogin = await dispatch(loginPost(values));
+     console.log(resLogin.payload.data)
+    if (resLogin.payload.status === 400) {
+      dispatch(
+        showToast({ message: "Usuario o contraseña incorrecta", type: "error" })
+      );
+    } else {
+      dispatch(setAuthData(resLogin.payload));
+      dispatch(showToast({ message: "Bienvenido", type: "success" }));
+      handleClick();
+    }
   };
 
   const formik = useFormik({

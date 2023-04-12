@@ -14,7 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
 import { Grid } from "@mui/material";
 
-export default function ComprasForm() {
+export default function ProveedoresForm() {
   const params = useParams();
   const navigate = useNavigate();
 
@@ -218,7 +218,7 @@ export default function ComprasForm() {
                   },
                 }}
                 onClick={() => {
-                  navigate("/compras");
+                  navigate("/proveedores");
                 }}
               ></button>
 
@@ -264,3 +264,4 @@ export default function ComprasForm() {
     </CenteredHalfContainer>
   );
 }
+ 

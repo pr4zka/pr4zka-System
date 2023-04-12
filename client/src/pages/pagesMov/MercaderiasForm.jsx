@@ -11,7 +11,7 @@ import TextField from "@mui/material/TextField";
 import { useDispatch, useSelector } from "react-redux";
 import { create } from "../../feactures/ciudades/ciudadesSlice";
 
-export default function CiudadesForm() {
+export default function MercasderiasForm() {
   const dispatch = useDispatch();
   // const {ciudad} = useSelector(state => state.ciudades)
 

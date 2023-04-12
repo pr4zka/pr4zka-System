@@ -1,10 +1,16 @@
-const { mercaderias } = require("../models");
-
+const mercaderias = require("../models/mercaderias")
+const marcas = require('../models/marcas')
 class mercaderiasContollers {
 
 
   static async getMercaderia(req, res) {
-    const response = await mercaderias.findAll();
+    const response = await mercaderias.findAll({include: [
+       {
+        model: marcas,
+        as: 'Mar',
+        attributes: ['descripcion'],
+       }
+    ]});
     res.status(200).json({
       status: true,
       message: "mercaderias encontradas",
@@ -28,9 +34,8 @@ class mercaderiasContollers {
 
   static async createMercaderia(req, res) {
     try {
-      const { descripcion, estado, preciocompra, precioventa, idtipoimpuesto } = req.body;
-      console.log(req.body)
-      const response = await mercaderias.create({ descripcion, estado, preciocompra, precioventa, idtipoimpuesto });
+      const {Mar_id, descripcion, estado, preciocompra, precioventa, Mer_impuesto } = req.body;
+      const response = await mercaderias.create({Mar_id, descripcion, estado, preciocompra, precioventa, Mer_impuesto });
       res.status(200).json({
         status: true,
         message: "mercaderia creada",

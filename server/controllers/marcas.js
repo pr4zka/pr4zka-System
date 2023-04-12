@@ -1,4 +1,4 @@
-const { marcas } = require("../models");
+const marcas = require("../models/marcas");
 
 class marcasControllers {
 

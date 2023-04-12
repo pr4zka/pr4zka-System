@@ -14,18 +14,18 @@ import { Box, Container, Button, Hidden } from "@mui/material";
 import PostAddIcon from "@mui/icons-material/PostAdd";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { getAll } from "../../feactures/ciudades/ciudadesSlice";
+import { getMercaderias } from "../../feactures/mercaderias/mercaderias";
 import { useDispatch, useSelector } from "react-redux";
 
-const Ciudades = () => {
+const Mercaderias = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   
-  const ciudades = useSelector((state) => state.ciudades.data);
+  const mercaderias = useSelector((state) => state.mercaderias);
   
   
   useEffect(() => {
-    dispatch(getAll());
+    dispatch(getMercaderias());
   }, []);
    
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -76,25 +76,34 @@ const Ciudades = () => {
         my={20}
       >
         <h1 className="text-center text-3xl mb-8 truncate">
-          Registro Ciudades
+          Registro Mercaderias
         </h1>
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 700 }} aria-label="customized table">
             <TableHead>
               <TableRow>
                 <StyledTableCell align="justify">Codigo</StyledTableCell>
-                <StyledTableCell align="justify">Descripcion</StyledTableCell>
+                <StyledTableCell align="justify">Marca</StyledTableCell>
+                <StyledTableCell align="justify">Decripcion</StyledTableCell>
+                <StyledTableCell align="justify">Precio Compra</StyledTableCell>
+                <StyledTableCell align="justify">Precio Venta</StyledTableCell>
+                <StyledTableCell align="justify">Impuesto</StyledTableCell>
+                <StyledTableCell align="justify">Estado</StyledTableCell>
                 <StyledTableCell align="justify"></StyledTableCell>
                 <StyledTableCell align="justify"></StyledTableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {ciudades && ciudades.map((row) => (
-                <StyledTableRow key={row.Ciu_id}>
-                  <StyledTableCell align="justify">{row.Ciu_id}</StyledTableCell>
-                  <StyledTableCell align="justify">
-                    {row.Ciu_descripcion}
-                  </StyledTableCell>
+              {mercaderias && mercaderias.map((row) => (
+                console.log(row),
+                <StyledTableRow key={row.Mer_id}>
+                  <StyledTableCell align="justify">{row.Mer_id}</StyledTableCell>
+                  <StyledTableCell align="justify">{row.Mar.descripcion}</StyledTableCell>
+                  <StyledTableCell align="justify">{row.descripcion}</StyledTableCell>
+                  <StyledTableCell align="justify">{row.preciocompra}</StyledTableCell>
+                  <StyledTableCell align="justify">{row.precioventa}</StyledTableCell>
+                  <StyledTableCell align="justify">{row.Mer_impuesto}</StyledTableCell>
+                  <StyledTableCell align="justify">{row.estado}</StyledTableCell>
 
                   <StyledTableCell
                     onClick={() => {
@@ -154,4 +163,4 @@ const Ciudades = () => {
   );
 };
 
-export default Ciudades;
+export default Mercaderias;

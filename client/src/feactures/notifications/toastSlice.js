@@ -6,13 +6,13 @@ const showNotification = {
     toast.success(message, { position: toast.POSITION.BOTTOM_UP });
   },
   error: (message) => {
-    toast.error(message, { position: toast.POSITION.BOTTOM_RIGHT });
+    toast.error(message, { position: toast.POSITION.BOTTOM_UP });
   },
   warning: (message) => {
-    toast.warning(message, { position: toast.POSITION.BOTTOM_RIGHT });
+    toast.warning(message, { position: toast.POSITION.BOTTOM_UP });
   },
   info: (message) => {
-    toast.info(message, { position: toast.POSITION.BOTTOM_RIGHT });
+    toast.info(message, { position: toast.POSITION.BOTTOM_UP });
   },
 };
 

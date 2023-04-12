@@ -66,8 +66,8 @@ app.use(require('./routes/compras'))
 // app.use(require("./routes/cargos"));
 // app.use(require("./routes/empleados"));
 // app.use(require("./routes/estadoCivil"));
-// app.use(require("./routes/marcas"));
-// app.use(require("./routes/mercaderias"));
+app.use(require("./routes/marcas"));
+app.use(require('./routes/mercaderias'));
 app.use(require("./routes/paises"));
 // app.use(require("./routes/ajusteMantener"));
 // app.use(require("./routes/vs_compras"));
