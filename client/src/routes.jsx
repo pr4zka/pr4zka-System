@@ -20,6 +20,7 @@ import  Ventas  from "./pages/ventas/Ventas";
 import Proveedores from "./pages/Proveedores";
 import ProveedoresForm from "./pages/ProveedoresForm";
 import MercasderiasForm from "./pages/pagesMov/MercaderiasForm";
+import Apertura from "./pages/ventas/Apertura";
 
 export default function Router() {
   const { isAuth } = useSelector((state) => state.auth);
@@ -52,6 +53,7 @@ export default function Router() {
         //ventas
         { path: "ventas", element: <Ventas /> },
         { path: "new/ventas", element: <Ventas /> },
+        {path: "apertura", element: <Apertura />}
       ],
     },
     {

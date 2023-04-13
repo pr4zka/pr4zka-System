@@ -15,16 +15,15 @@ import EditIcon from "@mui/icons-material/Edit";
 import { Box, Container, Button, Hidden, Link, TablePagination } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch, useSelector } from "react-redux";
-import { getAll } from "../feactures/compras/comprasSlice";
 
-export default function Compras() {
+export default function Apertura() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const compras = useSelector((state) => state.compras);
 
   useEffect(() => {
-    dispatch(getAll());
+
   }, []);
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -71,34 +70,26 @@ export default function Compras() {
   return (
     <CenteredHalfContainer>
       <Box>
-        <h1 className="text-center text-3xl mb-8 truncate">Registro Compras</h1>
+        <h1 className="text-center text-3xl mb-8 truncate">Apertura y Cierre de caja</h1>
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 700 }} aria-label="customized table">
             <TableHead>
               <TableRow>
-                <StyledTableCell align="justify">Codigo</StyledTableCell>
-                <StyledTableCell align="justify">Pedido</StyledTableCell>
-                <StyledTableCell align="justify">Proveedor</StyledTableCell>
-                <StyledTableCell align="justify">Usuario</StyledTableCell>
-                <StyledTableCell align="justify">Sucursal</StyledTableCell>
+                <StyledTableCell align="justify">Caja</StyledTableCell>
                 <StyledTableCell align="justify">Fecha</StyledTableCell>
-                <StyledTableCell align="justify">
-                  Tipo Comprobante
-                </StyledTableCell>
-                <StyledTableCell align="justify">Nro Factura</StyledTableCell>
-                <StyledTableCell align="justify">Observacion</StyledTableCell>
-                <StyledTableCell align="justify">Total</StyledTableCell>
-                <StyledTableCell align="justify">Total Exenta</StyledTableCell>
-                <StyledTableCell align="justify">Total iva5</StyledTableCell>
-                <StyledTableCell align="justify">Total iva10</StyledTableCell>
-                <StyledTableCell align="justify">Estado</StyledTableCell>
+                <StyledTableCell align="justify">Usuario</StyledTableCell>
+                <StyledTableCell align="justify">Monto Inicial</StyledTableCell>
+                <StyledTableCell align="justify">Monto Actual</StyledTableCell>
+                <StyledTableCell align="justify">Monto Tarjeta</StyledTableCell>
+                <StyledTableCell align="justify">Monto Cheque</StyledTableCell>
+                <StyledTableCell align="justify">Monto Efectivo</StyledTableCell>
+                <StyledTableCell align="justify">Cierre Fecha</StyledTableCell>
                 <StyledTableCell align="justify"></StyledTableCell>
                 <StyledTableCell align="justify"></StyledTableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {compras.map((row) => (
-              console.log(),
+              {/* {compras.map((row) => (
                 <StyledTableRow key={row.Com_id}>
                   <StyledTableCell align="justify">{row.Com_id}</StyledTableCell>
                   <StyledTableCell align="justify">{row.Ped.Ped_Id}</StyledTableCell>
@@ -130,8 +121,9 @@ export default function Compras() {
                     <DeleteIcon color="error" className="cursor-pointer" />
                   </StyledTableCell>
                 </StyledTableRow>
-              ))}
+              ))} */}
             </TableBody>
+            
           </Table>
         </TableContainer>
         <Box sx={{ display: "flex", justifyContent: "flex-end" }}>

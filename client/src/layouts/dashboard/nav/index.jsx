@@ -12,6 +12,7 @@ import useResponsive from '../../../hooks/useResponsive';
 import Logo from '../../../components/logo';
 import Scrollbar from '../../../components/scrollbar';
 import NavSection from '../../../components/nav-section';
+import {useDispatch, useSelector} from 'react-redux'
 //
 import navConfig from './config';
 
@@ -35,6 +36,9 @@ Nav.propTypes = {
 };
 
 export default function Nav({ openNav, onCloseNav }) {
+   
+  const profile = useSelector((state) => state.auth);
+  
   const { pathname } = useLocation();
 
   const isDesktop = useResponsive('up', 'lg');
@@ -66,11 +70,11 @@ export default function Nav({ openNav, onCloseNav }) {
 
             <Box sx={{ ml: 2 }}>
               <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
-                {account.displayName}
+                {profile.user}
               </Typography>
 
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                {account.role}
+                {"Admin"}
               </Typography>
             </Box>
           </StyledAccount>

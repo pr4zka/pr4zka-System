@@ -14,7 +14,7 @@ import { LoadingButton } from "@mui/lab";
 import Iconify from "../../../components/iconify";
 import { useDispatch, useSelector } from "react-redux";
 import { loginPost } from "../../../feactures/auth/auhtSlice";
-import { setAuthData } from "../../../feactures/auth/auhtSlice";
+import { setAuthData, setProfile } from "../../../feactures/auth/auhtSlice";
 import { showToast } from "../../../feactures/notifications/toastSlice";
 
 export default function LoginForm() {
@@ -30,14 +30,15 @@ export default function LoginForm() {
 
   const handleLogin = async (values) => {
     const resLogin = await dispatch(loginPost(values));
-     console.log(resLogin.payload.data)
     if (resLogin.payload.status === 400) {
       dispatch(
         showToast({ message: "Usuario o contraseña incorrecta", type: "error" })
       );
     } else {
       dispatch(setAuthData(resLogin.payload));
-      dispatch(showToast({ message: "Bienvenido", type: "success" }));
+      const { token, ...profile } = resLogin.payload;
+      dispatch(setProfile(profile.msg.split(" ")[1]));
+      dispatch(showToast({ message: `Bienvenido ${profile.msg.split(" ")[1]}`, type: "success" }));
       handleClick();
     }
   };

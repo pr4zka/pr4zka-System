@@ -28,7 +28,6 @@ export const toastSlice = createSlice({
   reducers: {
     showToast: (state, action) => {
       state.toast = action.payload;
-      console.log(action.payload.message);
       showNotification[action.payload.type](action.payload.message);
     },
     hideToast: (state) => {
